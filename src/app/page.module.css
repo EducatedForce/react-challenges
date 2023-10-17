@@ -1,7 +1,7 @@
 .main {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 1rem;
     align-items: center;
     padding: 6rem;
@@ -9,11 +9,13 @@
 }
 
 .menuItems {
+    min-width: 15rem;
     background: var(--primary-color);
     color: var(--light-color);
     padding: 1rem;
     border-radius: var(--border-radius);
     box-shadow: var(--main-shaddow);
+    text-align: center;
 }
 
 .menuItems:hover {

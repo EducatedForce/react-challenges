@@ -21,6 +21,21 @@ a {
     text-decoration: none;
 }
 
+button {
+    padding: 0.75rem 1rem;
+    background: var(--primary-color);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--light-color);
+    font-size: 1rem;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+button:hover {
+    filter: brightness(1.05);
+}
+
 header {
     padding: 1rem;
     text-align: center;
