@@ -26,7 +26,7 @@ const MoleGame = () => {
     score: number,
     moles: number
   }>({score: 0, moles: 0});
-  const [triggerMole, setTriggerMole] = useState(true);
+  const [triggerMole, setTriggerMole] = useState(false);
   const [displayMole, setDisplayMole] = useState(false);
   const [displayedMoleIndex, setDisplayedMoleIndex] = useState(0);
   const [gameRun, setGameRun] = useState(true);
@@ -50,6 +50,10 @@ const MoleGame = () => {
       setDisplayMole(true);
       setTimeout(() => {
         setDisplayMole(false);
+        setStats((prevState) => {
+          const newTotalMoles = prevState.moles + 1;
+          return {...prevState, moles: newTotalMoles};
+        });
       }, 750);
     }
   }, [triggerMole, gameRun]);
@@ -58,10 +62,6 @@ const MoleGame = () => {
     if (!displayMole && gameRun) {
       setTriggerMole(false);
       setDisplayedMoleIndex(getRandomInt(0, GRID_LENGTH ** 2));
-      setStats((prevState) => {
-        const newTotalMoles = prevState.moles + 1;
-        return {...prevState, moles: newTotalMoles};
-      });
       setTimeout(() => {
         setTriggerMole(true);
       }, 2000);
@@ -69,8 +69,8 @@ const MoleGame = () => {
   }, [displayMole, gameRun]);
 
   useEffect(() => {
-    if (stats.moles >= 20){
-      setGameRun(false)
+    if (stats.moles >= 20) {
+      setGameRun(false);
     }
   }, [stats]);
 
